@@ -31,4 +31,16 @@ finalmodel.compile(
     metrics = ['accuracy'] 
 )
 
+train_datagen = ImageDataGenerator(rescale = 1./255,shear_range = 0.2,zoom_range = 0.2,horizontal_flip = True)
+
+test_datagen = ImageDataGenerator(rescale = 1./255)
+
+training_set = train_datagen.flow_from_directory('/Users/utkarshkushwaha/Downloads/ITDEPT/Deep-Learning-Face-Recognition-master/Dataset/Train',target_size = (224, 224),batch_size = 32,class_mode = 'categorical')
+
+test_set = test_datagen.flow_from_directory('/Users/utkarshkushwaha/Downloads/ITDEPT/Deep-Learning-Face-Recognition-master/Dataset/Test',
+                                            target_size = (224, 224),
+                                            batch_size = 32,
+                                            class_mode = 'categorical')
+
+
 # finalmodel.fit(x, y, epoch = 21, steps_per_epoch = len(training_set))

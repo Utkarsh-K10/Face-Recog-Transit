@@ -21,9 +21,7 @@ vgg = VGG16(input_shape=IMAGE_SIZE + [3], weights='imagenet', include_top=False)
 # don't train existing weights
 for layer in vgg.layers:
   layer.trainable = False
-  
-
-  
+    
   # useful for getting number of classes
 folders = glob('/Users/utkarshkushwaha/Downloads/ITDEPT/Deep-Learning-Face-Recognition-master/Dataset/Train/*')
   
@@ -83,8 +81,6 @@ r = model.fit_generator(
 # plt.legend()
 # # plt.show()
 # plt.savefig('AccVal_acc')
-
-import tensorflow as tf
 
 from keras.models import load_model
 
