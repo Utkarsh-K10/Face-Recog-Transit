@@ -43,4 +43,4 @@ test_set = test_datagen.flow_from_directory('/Users/utkarshkushwaha/Downloads/IT
                                             class_mode = 'categorical')
 
 
-# finalmodel.fit(x, y, epoch = 21, steps_per_epoch = len(training_set))
+finalmodel.fit(x, y, epoch = 21, steps_per_epoch = len(training_set))
