@@ -7,6 +7,7 @@ from keras.preprocessing.image import ImageDatagenerator
 from keras.applications.vgg16 import VGG16
 from keras.applications.vgg16 import preprocessinginput
 from keras.models import Sequential
+from keras.optimizers import SGD
 
 IMAGE_SIZE = [224, 224]
 
@@ -25,9 +26,10 @@ prediction = Dense(unit = len(folders), activation = "softmax")(x)
 
 finalmodel = Model(inputs = vggmodel.input, outputs = prediction)
 finalmodel.summary()
+opt = SGD(learning_rate = 0.1)
 finalmodel.compile(
     loss= "categorical_crossentropy",
-    optimizer = "adam",
+    optimizer = opt,
     metrics = ['accuracy'] 
 )
 

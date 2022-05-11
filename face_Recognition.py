@@ -8,6 +8,7 @@ from keras.models import Sequential
 import numpy as np
 from glob import glob
 import matplotlib.pyplot as plt
+from keras.optimizer import SGD
 
 # re-size all the images to this
 IMAGE_SIZE = [224, 224]
@@ -37,10 +38,11 @@ model = Model(inputs=vgg.input, outputs=prediction)
 # view the structure of the model
 model.summary()
 
+opt = SGD(learning_rate = 0.1)
 # tell the model what cost and optimization method to use
 model.compile(
   loss='categorical_crossentropy',
-  optimizer='adam',
+  optimizer=opt,
   metrics=['accuracy']
 )
 
