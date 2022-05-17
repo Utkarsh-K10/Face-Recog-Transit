@@ -46,3 +46,14 @@ test_set = test_datagen.flow_from_directory('/Users/utkarshkushwaha/Downloads/IT
 
 
 finalmodel.fit(x, y, epoch = 21, steps_per_epoch = len(training_set))
+
+def createModel(vggmodel, folderpath):
+    for layer in vggmodel.layers:
+        layer.trainable = False
+    folder = folderpath
+    x = Flatten()(vggmodel.input)
+    x = Dropout(rate = 0.5)(x)
+    prediction = Dense(unit = len(folders), activation = "softmax")(x)
+    finalmodel = Model(inputs = vggmodel.input, outputs = prediction)
+    finalmodel.summary()
+    return finalmodel
