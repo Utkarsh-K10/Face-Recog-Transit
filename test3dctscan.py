@@ -19,7 +19,6 @@ def read_nifti_file(filepath):
     scan = scan.get_fdata()
     return scan
 
-
 def normalize(volume):
     """Normalize the volume"""
     min = -1000
@@ -30,6 +29,15 @@ def normalize(volume):
     volume = volume.astype("float32")
     return volume
 
+def Normalize(volume):
+    """Normalize the volume"""
+    min = -1000
+    max = 400
+    volume[volume < min] = min
+    volume[volume > max] = max
+    volume = (volume - min) / (max - min)
+    volume = volume.astype("float32")
+    return volume
 
 def resize_volume(img):
     """Resize across z-axis"""
